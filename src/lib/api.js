@@ -54,15 +54,9 @@ async function request(path, options = {}) {
 export async function fetchMemoriais() {
   const data = await request('/api/memoriais');
 
-  console.log('=== RESPOSTA DA API ===');
-  console.log(data);
-  console.log('É array?', Array.isArray(data));
-
   if (Array.isArray(data)) return data;
   if (Array.isArray(data?.memoriais)) return data.memoriais;
   if (Array.isArray(data?.data)) return data.data;
-
-  console.warn('Formato inesperado:', data);
 
   return [];
 }
